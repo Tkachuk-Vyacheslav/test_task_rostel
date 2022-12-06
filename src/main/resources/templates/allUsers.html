@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exp</title>
+</head>
+<body>
+<table>
+    <thead>
+    <th>id</th>
+    <th>имя</th>
+    <th>фамилия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="usr, iterStat : ${totalList}"
+        th:style="${iterStat.odd}? 'font-weight: bold;'">
+        <td th:text="${usr.getId()}"></td>
+        <p><td th:text="${usr.getFirstName()}"></td></p>
+        <td th:text="${usr.getLastName()}"></td>
+        <td>
+            <a th:href="@{/users/edit/{id}(id=${usr.getId()})}">edit</a>
+            <a th:href="@{/users/delete/{id}(id=${usr.getId()})}">delete</a>
+            <!--  <form th:method="DELETE" th:action="@{/users/delete/{id}(id=${usr.getId()})}">
+                  <input type="submit" value="Delete"/>
+              </form>-->
+           </td>
+      </tr>
+      </tbody>
+  </table>
+       <div>
+           <h2> </h2>
+           <a th:href="@{/users/add}">add user</a>
+       </div>
+
+  </body>
+  </html>
+
+          <!-- <table> — тег для создания таблицы.
+          <tr> — строка таблицы
+          <th> — заголовок столбца
+          <td> — ячейка таблицы
+          https://javarush.com/groups/posts/2252-znakomstvo-s-maven-spring-mysql-hibernate-i-pervoe-crud-prilozhenie-chastjh-2
+          промотать вниз
+          -->
